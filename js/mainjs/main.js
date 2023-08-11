@@ -141,12 +141,52 @@ domID("btnCapNhat").onclick = function () {
     var chucVu = domID('chucvu').value;
     var gioLam = domID('gioLam').value;
 
-    var nvUpdate = new NhanVien(taiKhoan, ten, email, matKhau, ngayThang, luong, chucVu, gioLam);
-    nvUpdate.tinhTongLuong();
-    nvUpdate.xepLoaiNV();
+    var isValid = true;
 
-    dsnv.capNhat(nvUpdate);
+    //* Tài khoản
+    isValid &= validation.checkEmpty(taiKhoan, "Không được để trống", "tbTKNV")
+        && validation.checkTK(taiKhoan, "Tài khoản không được trùng", "tbTKNV", dsnv.mangNV)
+        && validation.checkLengthTK(taiKhoan, "Tài khoản tối đa 4-6 ký số", "tbTKNV")
 
-    setLocalStorage();
-    getLocalStorage();
+    //*Tên
+    isValid &= validation.checkEmpty(ten, "Không được để trống", "tbTen")
+        && validation.checkName(ten, "Tên phải là chữ", "tbTen")
+
+    //*Email
+    isValid &= validation.checkEmpty(email, "Không được để trống", "tbEmail")
+        && validation.checkEmail(email, "Email chưa đúng định dạng", "tbEmail")
+
+    //*Mật khẩu
+    isValid &= validation.checkEmpty(matKhau, "Không được để trống", "tbMatKhau")
+        && validation.checkMatKhau(matKhau, "Mật khẩu từ 6-10 ký tự (chứa ít nhất 1 ký tự số, 1 ký tự in hoa, 1 ký tự đặc biệt)", "tbMatKhau")
+
+    //*Ngày tháng
+    isValid &= validation.checkEmpty(ngayThang, "Không được để trống", "tbNgay")
+        && validation.checkNgayThang(ngayThang, "Ngày tháng phải có dạng mm/dd/yyyy", "tbNgay")
+
+    //*Lương
+    isValid &= validation.checkEmpty(luong, "Không được để trống", "tbLuongCB")
+        && validation.checkLuong(luong, "Lương phải từ 1.000.000 - 20.000.000", "tbLuongCB")
+
+    //*Chức vụ
+    isValid &= validation.checkEmpty(chucVu, "Hãy chọn chức vụ", "tbChucVu")
+        && validation.checkChucVu(chucVu, "Vui lòng chọn chức vụ hợp lệ", "tbChucVu")
+
+    //*Giờ làm
+    isValid &= validation.checkEmpty(gioLam, "Không được để trống", "tbGiolam")
+        && validation.checkGioLam(gioLam, "Giờ làm từ 80 tới 200 giờ", "tbGiolam")
+
+
+    if (isValid) {
+        var nvUpdate = new NhanVien(taiKhoan, ten, email, matKhau, ngayThang, luong, chucVu, gioLam);
+        nvUpdate.tinhTongLuong();
+        nvUpdate.xepLoaiNV();
+
+        dsnv.capNhat(nvUpdate);
+
+        setLocalStorage();
+        getLocalStorage();
+    }
+
+
 }
