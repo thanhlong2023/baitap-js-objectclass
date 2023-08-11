@@ -143,10 +143,7 @@ domID("btnCapNhat").onclick = function () {
 
     var isValid = true;
 
-    //* Tài khoản
-    isValid &= validation.checkEmpty(taiKhoan, "Không được để trống", "tbTKNV")
-        && validation.checkTK(taiKhoan, "Tài khoản không được trùng", "tbTKNV", dsnv.mangNV)
-        && validation.checkLengthTK(taiKhoan, "Tài khoản tối đa 4-6 ký số", "tbTKNV")
+
 
     //*Tên
     isValid &= validation.checkEmpty(ten, "Không được để trống", "tbTen")
