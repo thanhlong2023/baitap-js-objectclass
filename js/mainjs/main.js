@@ -96,6 +96,8 @@ domID("btnThemNV").onclick = function () {
         hienThiDSNV(dsnv.mangNV);
 
         setLocalStorage();
+
+        domID("btnCapNhat").innerHTML = "Cập nhật";
     }
 
 }
@@ -126,9 +128,13 @@ function hienThiChiTiet(maXem) {
 
 }
 domID('reset').onclick = function () {
-    console.log(123);
+
     domID("formQLNV").reset();
     domID("tknv").disabled = false;
+    domID("btnCapNhat").innerHTML = "Cập nhật";
+    domID("btnCapNhat").style.backgroundColor = "#33ab4e";
+
+
 }
 
 domID("btnCapNhat").onclick = function () {
@@ -143,7 +149,7 @@ domID("btnCapNhat").onclick = function () {
 
     var isValid = true;
 
-
+    //*Tài khoản
 
     //*Tên
     isValid &= validation.checkEmpty(ten, "Không được để trống", "tbTen")
@@ -183,7 +189,31 @@ domID("btnCapNhat").onclick = function () {
 
         setLocalStorage();
         getLocalStorage();
+
+        domID("btnCapNhat").innerHTML = "Thành công";
+        domID("btnCapNhat").style.backgroundColor = "#33ab4e";
+    } else {
+        domID("btnCapNhat").innerHTML = "Thất bại";
+        domID("btnCapNhat").style.backgroundColor = "red";
     }
 
 
+}
+document.getElementById("btnTimNV").onclick = function () {
+    var tuTK = document.getElementById("searchName").value;
+
+    var mangTK = dsnv.searchByName(tuTK);
+
+    hienThiDSNV(mangTK);
+
+}
+
+
+
+document.getElementById("searchName").onkeydown = function () {
+    var tuTK = document.getElementById("searchName").value;
+
+    var mangTK = dsnv.searchByName(tuTK);
+
+    hienThiDSNV(mangTK);
 }

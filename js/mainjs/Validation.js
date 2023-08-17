@@ -74,7 +74,7 @@ function Validation() {
         return false;
     }
     this.checkNgayThang = function (value, message, spanID) {
-        var pattern = /^(((0[1-9]|[12]\d|3[01])\/(0[13578]|1[02])\/((19|[2-9]\d)\d{2}))|((0[1-9]|[12]\d|30)\/(0[13456789]|1[012])\/((19|[2-9]\d)\d{2}))|((0[1-9]|1\d|2[0-8])\/02\/((19|[2-9]\d)\d{2}))|(29\/02\/((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))))$/g;
+        var pattern = /^(0?[1-9]|1[0-2])[\/](0?[1-9]|[12]\d|3[01])[\/](19|20)\d{2}$/g;
         if (value.match(pattern)) {
             domID(spanID).innerHTML = "";
             domID(spanID).style.display = "none";
@@ -123,5 +123,18 @@ function Validation() {
         document.getElementById(spanID).style.display = "block";
         return false;
     }
+
+    //check thành công sau khi cập nhật
+    this.checkCapNhat = function (value, messageThatBai, spanID) {
+        if (value.trim() != "") {
+            document.getElementById(spanID).innerHTML = "";
+            document.getElementById(spanID).style.display = "none";
+            return true;
+        }
+        document.getElementById(spanID).innerHTML = messageThatBai;
+        document.getElementById(spanID).style.display = "block";
+        return false;
+    }
+
 
 }
