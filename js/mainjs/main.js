@@ -98,6 +98,14 @@ domID("btnThemNV").onclick = function () {
         setLocalStorage();
 
         domID("btnCapNhat").innerHTML = "Cập nhật";
+
+        domID("tbTKNV").style.display = "block";
+        domID("tbTKNV").innerHTML = "Thêm người dùng thành công";
+        domID("tbTKNV").style.color = "green";
+    } else {
+        domID("tbTKNV").style.display = "block";
+       
+        domID("tbTKNV").style.color = "red";
     }
 
 }
@@ -134,6 +142,14 @@ domID('reset').onclick = function () {
     domID("btnCapNhat").innerHTML = "Cập nhật";
     domID("btnCapNhat").style.backgroundColor = "#33ab4e";
 
+    domID("tbTKNV").style.display = "none";
+    domID("tbTen").style.display = "none";
+    domID("tbEmail").style.display = "none";
+    domID("tbMatKhau").style.display = "none";
+    domID("tbNgay").style.display = "none";
+    domID("tbLuongCB").style.display = "none";
+    domID("tbChucVu").style.display = "none";
+    domID("tbGiolam").style.display = "none";
 
 }
 
@@ -190,11 +206,19 @@ domID("btnCapNhat").onclick = function () {
         setLocalStorage();
         getLocalStorage();
 
-        domID("btnCapNhat").innerHTML = "Thành công";
+       
         domID("btnCapNhat").style.backgroundColor = "#33ab4e";
+
+        domID("tbTKNV").style.display = "block";
+        domID("tbTKNV").innerHTML = "Cập nhật thành công";
+        domID("tbTKNV").style.color = "green";
     } else {
-        domID("btnCapNhat").innerHTML = "Thất bại";
+       
         domID("btnCapNhat").style.backgroundColor = "red";
+
+        domID("tbTKNV").style.display = "block";
+        domID("tbTKNV").innerHTML = "Cập nhật thất bại";
+        domID("tbTKNV").style.color = "red";
     }
 
 
