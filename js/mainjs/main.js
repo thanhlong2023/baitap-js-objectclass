@@ -104,7 +104,7 @@ domID("btnThemNV").onclick = function () {
         domID("tbTKNV").style.color = "green";
     } else {
         domID("tbTKNV").style.display = "block";
-       
+
         domID("tbTKNV").style.color = "red";
     }
 
@@ -166,7 +166,7 @@ domID("btnCapNhat").onclick = function () {
     var isValid = true;
 
     //*Tài khoản
-
+    isValid &= validation.checkEmptyCapNhat(taiKhoan, "Tài khoản chưa được cập nhật (ID không tồn tại)", "tbTKNV")
     //*Tên
     isValid &= validation.checkEmpty(ten, "Không được để trống", "tbTen")
         && validation.checkName(ten, "Tên phải là chữ", "tbTen")
@@ -206,14 +206,14 @@ domID("btnCapNhat").onclick = function () {
         setLocalStorage();
         getLocalStorage();
 
-       
+
         domID("btnCapNhat").style.backgroundColor = "#33ab4e";
 
         domID("tbTKNV").style.display = "block";
         domID("tbTKNV").innerHTML = "Cập nhật thành công";
         domID("tbTKNV").style.color = "green";
     } else {
-       
+
         domID("btnCapNhat").style.backgroundColor = "red";
 
         domID("tbTKNV").style.display = "block";

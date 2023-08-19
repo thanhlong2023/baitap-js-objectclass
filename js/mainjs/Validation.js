@@ -123,18 +123,18 @@ function Validation() {
         document.getElementById(spanID).style.display = "block";
         return false;
     }
-
-    //check thành công sau khi cập nhật
-    this.checkCapNhat = function (value, messageThatBai, spanID) {
+    this.checkEmptyCapNhat = function (value, message, spanID) {
         if (value.trim() != "") {
-            document.getElementById(spanID).innerHTML = "";
-            document.getElementById(spanID).style.display = "none";
-            return true;
+
+            document.getElementById(spanID).innerHTML = message;
+            document.getElementById(spanID).style.display = "block";
+            return false;
         }
-        document.getElementById(spanID).innerHTML = messageThatBai;
-        document.getElementById(spanID).style.display = "block";
-        return false;
+        document.getElementById(spanID).innerHTML = "";
+        document.getElementById(spanID).style.display = "none";
+        return true;
     }
+
 
 
 }
