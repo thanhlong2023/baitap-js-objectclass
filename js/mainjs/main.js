@@ -166,7 +166,7 @@ domID("btnCapNhat").onclick = function () {
     var isValid = true;
 
     //*Tài khoản
-    isValid &= validation.checkEmptyCapNhat(taiKhoan, "Tài khoản chưa được cập nhật (ID không tồn tại)", "tbTKNV")
+   
     //*Tên
     isValid &= validation.checkEmpty(ten, "Không được để trống", "tbTen")
         && validation.checkName(ten, "Tên phải là chữ", "tbTen")
